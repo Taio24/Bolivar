@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flower Shop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        .header {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        .nav {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        .nav a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .container {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .footer {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        .product {
+            border: 1px solid #ddd;
+            margin: 20px;
+            padding: 10px;
+            text-align: center;
+            background-color: #fff;
+            display: inline-block;
+            width: 30%;
+        }
+
+        .product img {
+            max-width: 100%;
+        }
+
+        .cart {
+            text-align: right;
+            margin-top: 10px;
+            margin-right: 20px;
+        }
+
+        .cart a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .product-title, .product-price {
+            margin: 10px 0;
+        }
+
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgb(0,0,0); 
+            background-color: rgba(0,0,0,0.4); 
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        form input, form textarea {
+            margin: 10px 0;
+            padding: 10px;
+            width: 80%;
+        }
+        
+        form button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        
+        form button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Bloom Flower Shop</h1>
+    </div>
+
+    <div class="nav">
+        <a href="#home">Home</a>
+        <a href="#about">About Us</a>
+        <a href="#shop">Shop</a>
+        <a href="#contact">Contact Us</a>
+        <a href="#register">Registration</a>
+    </div>
+
+    <div id="home" class="container">
+        <h2>Welcome to the Bloom Flower Shop</h2>
+        <p>Explore our collection of beautiful flowers.</p>
+    </div>
+
+    <div id="about" class="container">
+        <h2>About Us</h2>
+        <p>At Bloom Flower Shop, we believe in the power of flowers to brighten days, celebrate special moments, and bring people together.</p>
+    </div>
+
+    <div id="shop" class="container">
+        <h2>Shop</h2>
+        
+        <div class="product" data-id="1" data-name="Rose Bouquet" data-price="2,499.00">
+            <img src="photo1.png" alt="Rose Bouquet">
+            <h2 class="product-title">Rose Bouquet</h2>
+            <p class="product-price">₱2,499.00</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <div class="product" data-id="2" data-name="Mirabel" data-price="3,299.00">
+            <img src="photo2.png" alt="Rose Bouquet">
+            <h2 class="product-title">Rose Bouquet</h2>
+            <p class="product-price">₱3,299.00</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <div class="product" data-id="3" data-name="Tulips Bouquet" data-price="3,000.00">
+            <img src="photo3.png" alt="Tulips Bouquet">
+            <h2 class="product-title">Tulips Bouquet</h2>
+            <p class="product-price">₱3,000.00</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+         <div class="product" data-id="3" data-name="Spring Scene" data-price="3,000.00">
+            <img src="photo4.png" alt="Spring Scene">
+            <h2 class="product-title">Spring Scene</h2>
+            <p class="product-price">₱5,199.00</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <div class="product" data-id="3" data-name="Meadow Melody" data-price="3,000.00">
+            <img src="photo5.png" alt="Meadow Melody">
+            <h2 class="product-title">Meadow Melody</h2>
+            <p class="product-price">₱1,200.00</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <div class="product" data-id="3" data-name="Lavander Love" data-price="3,000.00">
+            <img src="photo6.png" alt="Lavander Love">
+            <h2 class="product-title">Lavander Love</h2>
+            <p class="product-price">₱1,200.00</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <div class="product" data-id="3" data-name="Sweet Spot" data-price="3,000.00">
+            <img src="photo7.png" alt="Sweet Spot">
+            <h2 class="product-title">Sweet Spot</h2>
+            <p class="product-price">₱1,399.00</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <div class="product" data-id="3" data-name="Taffy" data-price="3,000.00">
+            <img src="photo8.png" alt="Taffy">
+            <h2 class="product-title">Taffy</h2>
+            <p class="product-price">₱799.00</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <div class="product" data-id="3" data-name="Lovely Posy" data-price="3,000.00">
+            <img src="photo1.png" alt="Lovely Posy">
+            <h2 class="product-title">Lovely Posy</h2>
+            <p class="product-price">₱1,199.00</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+
+
+    </div>
+
+    <div id="contact" class="container">
+        <h2>Contact Us</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+
+    <div id="register" class="container">
+        <h2>Registration</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <input type="password" placeholder="Your Password" required>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Your Cart</h2>
+            <ul id="cart-items"></ul>
+            <p>Total: $<span id="cart-total">0.00</span></p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Flower Shop</p>
+    </div>
+
+    <script>
+       let cart = [];
+let registeredUsername = "";
+
+function addToCart(productName, productImage, price) {
+
+    const product = { name: productName, image: productImage, price: price };
+    cart.push(product);
+    updateCartDisplay();
+}
+
+function updateCartDisplay() {
+    const cartItems = document.getElementById('cart-items');
+    cartItems.innerHTML = '';
+
+    cart.forEach((item, index) => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+            ${item.name} - P${item.price.toFixed(2)}
+            <button onclick="removeFromCart(${index})">Remove</button>
+        `;
+        cartItems.appendChild(li);
+    });
+}
+
+function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCartDisplay();
+}
+
+function checkout() {
+    if (registeredUsername === "") {
+        alert("Please register before checking out.");
+        return;
+    }
+
+    if (cart.length === 0) {
+        alert("Your cart is empty!");
+    } else {
+        let totalPrice = 0;
+        let receiptContent = Receipt for ${registeredUsername}:\n\n;
+
+        cart.forEach(item => {
+            receiptContent += ${item.name} Price: P${item.price.toFixed(2)}\n;
+            totalPrice += item.price;
+        });
+
+        receiptContent += \nTotal price: P${totalPrice.toFixed(2)}\n\nThank you for your purchase, ${registeredUsername}!;
+
+        alert(receiptContent);
+
+        cart = [];
+        updateCartDisplay();
+    }
+}
+
+function openModal() {
+    document.getElementById("modal").style.display = "block";
+}
+
+function closeModal() {
+    document.getElementById("modal").style.display = "none";
+}
+
+document.getElementById("registration-form").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    registeredUsername = document.getElementById("username").value;
+    document.getElementById("usernameDisplay").textContent = "Welcome, " + registeredUsername + "!";
+    document.getElementById("cart-heading").textContent = registeredUsername + "'s Shopping Cart";
+
+    closeModal();
+});
+
+function smoothScroll(targetId) {
+    const targetElement = document.getElementById(targetId);
+    const yOffset = -80;
+    const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+    window.scrollTo({ top: y, behavior: 'smooth' });
+}
+        });
+    </script>
+</body>
+</html>
